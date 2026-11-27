@@ -102,7 +102,9 @@
     "userPermissions": "Permissões de Usuários",
     "modules": "Módulos",
     "modulePermissions": "Módulos e Permissões",
-    "searchPlaceholder": "Buscar páginas..."
+    "searchPlaceholder": "Buscar páginas...",
+    "requestProject": "Solicitar projeto",
+    "projectModeration": "Moderação de projetos"
   },
   "auth": {
     "login": "Entrar",
@@ -853,6 +855,148 @@
       "invalidDocument": "Documento inválido para a nacionalidade selecionada",
       "userNotFoundInGlobalPlatform": "Usuário não encontrado na Plataforma Global da Zion. Por favor verifique o número do documento.",
       "checkUserError": "Erro ao verificar usuário. Tente novamente."
+    }
+  },
+  "projectRequests": {
+    "status": {
+      "NOVA": "Nova",
+      "EM_ANALISE": "Em análise",
+      "APROVADA": "Aprovada",
+      "RECUSADA": "Recusada"
+    },
+    "form": {
+      "pageTitle": "Solicitar projeto",
+      "pageDescription": "Conte ao time de tecnologia o que poderia ser automatizado ou melhorado na sua área.",
+      "requesterSection": "Seus dados",
+      "requesterHint": "Puxamos do seu cadastro. Confira se o WhatsApp está atualizado.",
+      "name": "Nome",
+      "email": "E-mail",
+      "whatsapp": "WhatsApp",
+      "whatsappHint": "Com DDD. O time de tecnologia vai usar para falar com você.",
+      "requestSection": "Sua solicitação",
+      "area": "Para qual área é a solicitação?",
+      "areaPlaceholder": "Selecione a área",
+      "loadingAreas": "Carregando áreas...",
+      "title": "Título",
+      "titlePlaceholder": "Ex.: Automação do pedido de almoço",
+      "description": "Descrição",
+      "descriptionPlaceholder": "Qual problema você tem hoje?\n\nO que você quer resolver com isso?\n\nQuantas pessoas serão impactadas?\n\nComo isso é feito hoje (planilha, papel, WhatsApp...)?",
+      "descriptionMinHint": "Mínimo de {min} caracteres. Quanto mais detalhes, melhor.",
+      "submit": "Enviar solicitação",
+      "success": "Solicitação enviada para o time de tecnologia!",
+      "error": "Não foi possível enviar a solicitação",
+      "sentTitle": "Solicitação enviada!",
+      "sentDescription": "Recebemos \"{title}\". O time de tecnologia vai analisar e entrar em contato pelo seu WhatsApp.",
+      "newRequest": "Fazer outra solicitação",
+      "guideTitle": "Como descrever bem",
+      "guideIntro": "Uma boa descrição ajuda o time a entender a sua dor e priorizar. Tente responder:",
+      "guideProblem": "Qual problema você tem atualmente?",
+      "guideGoal": "O que você quer resolver com isso?",
+      "guidePeople": "Quantas pessoas serão impactadas?",
+      "guideToday": "Como isso é feito hoje?",
+      "exampleLabel": "Exemplo de título",
+      "exampleTitle": "Automação do pedido de almoço dos voluntários",
+      "errors": {
+        "area": "Selecione a área",
+        "title": "O título deve ter entre {min} e {max} caracteres",
+        "description": "Descreva com pelo menos {min} caracteres",
+        "whatsapp": "Informe um WhatsApp válido com DDD"
+      }
+    },
+    "moderation": {
+      "pageTitle": "Moderação de projetos",
+      "pageDescription": "Solicitações enviadas pelos líderes, agrupadas por área.",
+      "filter": "Mostrar:",
+      "filterOpen": "Abertas (novas + em análise)",
+      "filterAll": "Todas",
+      "count": "{count, plural, =0 {Nenhuma solicitação} one {# solicitação} other {# solicitações}}",
+      "refresh": "Atualizar",
+      "empty": "Nenhuma solicitação por aqui.",
+      "newCount": "{count, plural, one {# nova} other {# novas}}",
+      "selectHint": "Selecione uma solicitação à esquerda para ler. Ao abrir, ela passa para \"Em análise\".",
+      "requestedAt": "Solicitado em {date}",
+      "viewedBy": "Visto por {name} em {date}",
+      "notes": "Anotações da moderação",
+      "notesPlaceholder": "Ex.: conversado com o líder da área em 02/12, entra no próximo ciclo...",
+      "decidedBy": "Decidido por {name} em {date}",
+      "approve": "Aprovar e enviar ao Kanban",
+      "reject": "Recusar",
+      "approved": "Aprovada! O card foi criado no Backlog do Kanban.",
+      "rejected": "Solicitação recusada.",
+      "loadError": "Erro ao carregar as solicitações",
+      "openError": "Erro ao abrir a solicitação",
+      "saveError": "Erro ao salvar"
+    }
+  },
+  "techBoard": {
+    "overdueFilter": "Em atraso ({count})",
+    "due": {
+      "overdue": "Em atraso · {date}",
+      "today": "Vence hoje",
+      "dueOn": "Prazo {date}",
+      "doneOn": "Concluído em {date}"
+    },
+    "actions": {
+      "start": "Iniciar (Em andamento)",
+      "complete": "Marcar como concluído"
+    },
+    "dates": {
+      "created": "Criado em {date}",
+      "started": "Iniciado em {date}",
+      "completed": "Concluído em {date}"
+    },
+    "history": {
+      "title": "Histórico e comentários",
+      "empty": "Nada por aqui ainda.",
+      "created": "Card criado em {column}",
+      "moved": "Moveu de {from} para {to}",
+      "assigned": "Responsável: {name}",
+      "unassigned": "Removeu o responsável ({name})",
+      "dueSet": "Prazo definido para {date}",
+      "dueCleared": "Prazo removido",
+      "edited": "Editou os dados do card",
+      "commentPlaceholder": "Escreva um comentário... (Ctrl+Enter envia)",
+      "commentingAs": "Comentando como {name}",
+      "send": "Comentar"
+    },
+    "title": "Kanban · Time de Tecnologia",
+    "subtitle": "Projetos aprovados entram sozinhos no Backlog",
+    "loginHint": "Acesso do time de tecnologia. Digite a senha do time.",
+    "password": "Senha do time",
+    "enter": "Entrar",
+    "loginError": "Não foi possível entrar",
+    "logout": "Sair",
+    "refresh": "Atualizar",
+    "newCard": "Novo card",
+    "editCard": "Detalhes do card",
+    "allAssignees": "Todos os responsáveis",
+    "unassigned": "Sem responsável",
+    "takeIt": "Pegar pra mim",
+    "askName": "Qual é o seu nome? (fica salvo neste navegador)",
+    "fromRequest": "Solicitação",
+    "emptyColumn": "Arraste cards para cá",
+    "requestedBy": "Solicitado por {name}",
+    "saved": "Card atualizado",
+    "saveError": "Erro ao salvar o card",
+    "loadError": "Erro ao carregar o Kanban",
+    "confirmDelete": "Remover este card do Kanban?",
+    "delete": "Remover",
+    "cancel": "Cancelar",
+    "save": "Salvar",
+    "columns": {
+      "BACKLOG": "Backlog",
+      "A_FAZER": "A fazer",
+      "EM_ANDAMENTO": "Em andamento",
+      "EM_REVISAO": "Em revisão",
+      "CONCLUIDO": "Concluído"
+    },
+    "fields": {
+      "dueDate": "Prazo",
+      "title": "Título",
+      "column": "Coluna",
+      "assignee": "Responsável",
+      "area": "Área",
+      "description": "Descrição"
     }
   }
 }
