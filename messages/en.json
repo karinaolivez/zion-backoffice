@@ -102,7 +102,9 @@
     "userPermissions": "User Permissions",
     "modules": "Modules",
     "modulePermissions": "Modules and Permissions",
-    "searchPlaceholder": "Search pages..."
+    "searchPlaceholder": "Search pages...",
+    "requestProject": "Request a project",
+    "projectModeration": "Project moderation"
   },
   "auth": {
     "login": "Login",
@@ -853,6 +855,117 @@
       "invalidDocument": "Invalid document for selected nationality",
       "userNotFoundInGlobalPlatform": "User not found in Zion Global Platform. Please check the document number.",
       "checkUserError": "Error checking user. Try again."
+    }
+  },
+  "projectRequests": {
+    "status": {
+      "NOVA": "New",
+      "EM_ANALISE": "Under review",
+      "APROVADA": "Approved",
+      "RECUSADA": "Declined"
+    },
+    "form": {
+      "pageTitle": "Request a project",
+      "pageDescription": "Tell the tech team what could be automated or improved in your area.",
+      "requesterSection": "Your details",
+      "requesterHint": "Taken from your profile. Make sure your WhatsApp is up to date.",
+      "name": "Name",
+      "email": "Email",
+      "whatsapp": "WhatsApp",
+      "whatsappHint": "With area code. The tech team will use it to reach you.",
+      "requestSection": "Your request",
+      "area": "Which area is this request for?",
+      "areaPlaceholder": "Select the area",
+      "loadingAreas": "Loading areas...",
+      "title": "Title",
+      "titlePlaceholder": "E.g.: Lunch order automation",
+      "description": "Description",
+      "descriptionPlaceholder": "What problem do you have today?\n\nWhat do you want to solve with this?\n\nHow many people will be impacted?\n\nHow is it done today (spreadsheet, paper, WhatsApp...)?",
+      "descriptionMinHint": "At least {min} characters. The more detail, the better.",
+      "submit": "Send request",
+      "success": "Request sent to the tech team!",
+      "error": "Could not send the request",
+      "sentTitle": "Request sent!",
+      "sentDescription": "We received \"{title}\". The tech team will review it and contact you on WhatsApp.",
+      "newRequest": "Make another request",
+      "guideTitle": "How to describe it well",
+      "guideIntro": "A good description helps the team understand your pain and prioritize. Try to answer:",
+      "guideProblem": "What problem do you have today?",
+      "guideGoal": "What do you want to solve with this?",
+      "guidePeople": "How many people will be impacted?",
+      "guideToday": "How is it done today?",
+      "exampleLabel": "Example title",
+      "exampleTitle": "Volunteer lunch order automation",
+      "errors": {
+        "area": "Select the area",
+        "title": "The title must be between {min} and {max} characters",
+        "description": "Describe it in at least {min} characters",
+        "whatsapp": "Enter a valid WhatsApp number with area code"
+      }
+    },
+    "moderation": {
+      "pageTitle": "Project moderation",
+      "pageDescription": "Requests sent by leaders, grouped by area.",
+      "filter": "Show:",
+      "filterOpen": "Open (new + under review)",
+      "filterAll": "All",
+      "count": "{count, plural, =0 {No requests} one {# request} other {# requests}}",
+      "refresh": "Refresh",
+      "empty": "No requests here.",
+      "newCount": "{count} new",
+      "selectHint": "Select a request on the left to read it. Opening it marks it \"Under review\".",
+      "requestedAt": "Requested on {date}",
+      "viewedBy": "Seen by {name} on {date}",
+      "notes": "Moderation notes",
+      "notesPlaceholder": "E.g.: talked to the area leader on 12/02, goes into the next cycle...",
+      "decidedBy": "Decided by {name} on {date}",
+      "approve": "Approve and send to Kanban",
+      "reject": "Decline",
+      "approved": "Approved! The card was created in the Kanban backlog.",
+      "rejected": "Request declined.",
+      "loadError": "Error loading requests",
+      "openError": "Error opening the request",
+      "saveError": "Error saving"
+    }
+  },
+  "techBoard": {
+    "title": "Kanban · Tech Team",
+    "subtitle": "Approved projects land in the Backlog automatically",
+    "loginHint": "Tech team access. Enter the team password.",
+    "password": "Team password",
+    "enter": "Enter",
+    "loginError": "Could not sign in",
+    "logout": "Sign out",
+    "refresh": "Refresh",
+    "newCard": "New card",
+    "editCard": "Card details",
+    "allAssignees": "All assignees",
+    "unassigned": "Unassigned",
+    "takeIt": "Take it",
+    "askName": "What is your name? (saved in this browser)",
+    "fromRequest": "Request",
+    "emptyColumn": "Drag cards here",
+    "requestedBy": "Requested by {name}",
+    "saved": "Card updated",
+    "saveError": "Error saving the card",
+    "loadError": "Error loading the Kanban",
+    "confirmDelete": "Remove this card from the Kanban?",
+    "delete": "Remove",
+    "cancel": "Cancel",
+    "save": "Save",
+    "columns": {
+      "BACKLOG": "Backlog",
+      "A_FAZER": "To do",
+      "EM_ANDAMENTO": "In progress",
+      "EM_REVISAO": "In review",
+      "CONCLUIDO": "Done"
+    },
+    "fields": {
+      "title": "Title",
+      "column": "Column",
+      "assignee": "Assignee",
+      "area": "Area",
+      "description": "Description"
     }
   }
 }

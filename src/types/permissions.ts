@@ -2,7 +2,8 @@
 export enum PermissionModule {
   USUARIOS = 'USUARIOS',
   PERMISSOES = 'PERMISSOES',
-  CAMPUS = 'CAMPUS'
+  CAMPUS = 'CAMPUS',
+  SOLICITACAO_PROJETOS = 'SOLICITACAO_PROJETOS'
 }
 
 // Enums para as ações possíveis

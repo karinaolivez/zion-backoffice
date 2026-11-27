@@ -102,7 +102,9 @@
     "userPermissions": "Permisos de usuario",
     "modules": "Módulos",
     "modulePermissions": "Módulos y permisos",
-    "searchPlaceholder": "Buscar páginas..."
+    "searchPlaceholder": "Buscar páginas...",
+    "requestProject": "Solicitar proyecto",
+    "projectModeration": "Moderación de proyectos"
   },
   "auth": {
     "login": "Iniciar sesión",
@@ -853,6 +855,117 @@
       "invalidDocument": "Documento inválido para la nacionalidad seleccionada",
       "userNotFoundInGlobalPlatform": "Usuario no encontrado en Zion Global Platform. Por favor verifica el número de documento.",
       "checkUserError": "Error al verificar usuario. Intenta de nuevo."
+    }
+  },
+  "projectRequests": {
+    "status": {
+      "NOVA": "Nueva",
+      "EM_ANALISE": "En análisis",
+      "APROVADA": "Aprobada",
+      "RECUSADA": "Rechazada"
+    },
+    "form": {
+      "pageTitle": "Solicitar proyecto",
+      "pageDescription": "Cuéntale al equipo de tecnología qué se podría automatizar o mejorar en tu área.",
+      "requesterSection": "Tus datos",
+      "requesterHint": "Los tomamos de tu registro. Verifica que tu WhatsApp esté actualizado.",
+      "name": "Nombre",
+      "email": "Correo",
+      "whatsapp": "WhatsApp",
+      "whatsappHint": "Con código de área. El equipo de tecnología lo usará para contactarte.",
+      "requestSection": "Tu solicitud",
+      "area": "¿Para qué área es la solicitud?",
+      "areaPlaceholder": "Selecciona el área",
+      "loadingAreas": "Cargando áreas...",
+      "title": "Título",
+      "titlePlaceholder": "Ej.: Automatización del pedido de almuerzo",
+      "description": "Descripción",
+      "descriptionPlaceholder": "¿Qué problema tienes hoy?\n\n¿Qué quieres resolver con esto?\n\n¿Cuántas personas serán impactadas?\n\n¿Cómo se hace hoy (planilla, papel, WhatsApp...)?",
+      "descriptionMinHint": "Mínimo {min} caracteres. Cuantos más detalles, mejor.",
+      "submit": "Enviar solicitud",
+      "success": "¡Solicitud enviada al equipo de tecnología!",
+      "error": "No fue posible enviar la solicitud",
+      "sentTitle": "¡Solicitud enviada!",
+      "sentDescription": "Recibimos \"{title}\". El equipo de tecnología la analizará y te contactará por WhatsApp.",
+      "newRequest": "Hacer otra solicitud",
+      "guideTitle": "Cómo describir bien",
+      "guideIntro": "Una buena descripción ayuda al equipo a entender tu necesidad y priorizar. Intenta responder:",
+      "guideProblem": "¿Qué problema tienes actualmente?",
+      "guideGoal": "¿Qué quieres resolver con esto?",
+      "guidePeople": "¿Cuántas personas serán impactadas?",
+      "guideToday": "¿Cómo se hace hoy?",
+      "exampleLabel": "Ejemplo de título",
+      "exampleTitle": "Automatización del pedido de almuerzo de voluntarios",
+      "errors": {
+        "area": "Selecciona el área",
+        "title": "El título debe tener entre {min} y {max} caracteres",
+        "description": "Describe con al menos {min} caracteres",
+        "whatsapp": "Ingresa un WhatsApp válido con código de área"
+      }
+    },
+    "moderation": {
+      "pageTitle": "Moderación de proyectos",
+      "pageDescription": "Solicitudes enviadas por los líderes, agrupadas por área.",
+      "filter": "Mostrar:",
+      "filterOpen": "Abiertas (nuevas + en análisis)",
+      "filterAll": "Todas",
+      "count": "{count, plural, =0 {Ninguna solicitud} one {# solicitud} other {# solicitudes}}",
+      "refresh": "Actualizar",
+      "empty": "No hay solicitudes aquí.",
+      "newCount": "{count, plural, one {# nueva} other {# nuevas}}",
+      "selectHint": "Selecciona una solicitud a la izquierda para leerla. Al abrirla, pasa a \"En análisis\".",
+      "requestedAt": "Solicitado el {date}",
+      "viewedBy": "Visto por {name} el {date}",
+      "notes": "Notas de moderación",
+      "notesPlaceholder": "Ej.: conversado con el líder del área el 02/12, entra en el próximo ciclo...",
+      "decidedBy": "Decidido por {name} el {date}",
+      "approve": "Aprobar y enviar al Kanban",
+      "reject": "Rechazar",
+      "approved": "¡Aprobada! La tarjeta se creó en el Backlog del Kanban.",
+      "rejected": "Solicitud rechazada.",
+      "loadError": "Error al cargar las solicitudes",
+      "openError": "Error al abrir la solicitud",
+      "saveError": "Error al guardar"
+    }
+  },
+  "techBoard": {
+    "title": "Kanban · Equipo de Tecnología",
+    "subtitle": "Los proyectos aprobados entran solos al Backlog",
+    "loginHint": "Acceso del equipo de tecnología. Ingresa la contraseña del equipo.",
+    "password": "Contraseña del equipo",
+    "enter": "Entrar",
+    "loginError": "No fue posible entrar",
+    "logout": "Salir",
+    "refresh": "Actualizar",
+    "newCard": "Nueva tarjeta",
+    "editCard": "Detalles de la tarjeta",
+    "allAssignees": "Todos los responsables",
+    "unassigned": "Sin responsable",
+    "takeIt": "Tomarla",
+    "askName": "¿Cuál es tu nombre? (queda guardado en este navegador)",
+    "fromRequest": "Solicitud",
+    "emptyColumn": "Arrastra tarjetas aquí",
+    "requestedBy": "Solicitado por {name}",
+    "saved": "Tarjeta actualizada",
+    "saveError": "Error al guardar la tarjeta",
+    "loadError": "Error al cargar el Kanban",
+    "confirmDelete": "¿Quitar esta tarjeta del Kanban?",
+    "delete": "Quitar",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "columns": {
+      "BACKLOG": "Backlog",
+      "A_FAZER": "Por hacer",
+      "EM_ANDAMENTO": "En progreso",
+      "EM_REVISAO": "En revisión",
+      "CONCLUIDO": "Terminado"
+    },
+    "fields": {
+      "title": "Título",
+      "column": "Columna",
+      "assignee": "Responsable",
+      "area": "Área",
+      "description": "Descripción"
     }
   }
 }

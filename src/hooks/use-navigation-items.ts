@@ -8,7 +8,9 @@ import {
   Shield,
   Users,
   Key,
-  MapPin
+  MapPin,
+  Lightbulb,
+  ClipboardList
 } from 'lucide-react';
 import { PermissionModule, PermissionAction } from '@/types/permissions';
 
@@ -63,6 +65,27 @@ export const useNavigationItems = ({ currentPath, hasAdminAccess }: UseNavigatio
           label: t('navigation.analytics'),
           path: '/zion-links',
           active: currentPath === '/zion-links'
+        },
+        // Módulo de Solicitação de Projetos
+        {
+          icon: Lightbulb,
+          label: t('navigation.requestProject'),
+          path: '/projetos/solicitar',
+          active: currentPath === '/projetos/solicitar',
+          permission: {
+            module: PermissionModule.SOLICITACAO_PROJETOS,
+            action: PermissionAction.CRIAR
+          }
+        },
+        {
+          icon: ClipboardList,
+          label: t('navigation.projectModeration'),
+          path: '/projetos/moderacao',
+          active: currentPath === '/projetos/moderacao',
+          permission: {
+            module: PermissionModule.SOLICITACAO_PROJETOS,
+            action: PermissionAction.LISTAR
+          }
         }
       ]
     },
