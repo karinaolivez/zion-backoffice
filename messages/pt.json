@@ -929,6 +929,36 @@
     }
   },
   "techBoard": {
+    "overdueFilter": "Em atraso ({count})",
+    "due": {
+      "overdue": "Em atraso · {date}",
+      "today": "Vence hoje",
+      "dueOn": "Prazo {date}",
+      "doneOn": "Concluído em {date}"
+    },
+    "actions": {
+      "start": "Iniciar (Em andamento)",
+      "complete": "Marcar como concluído"
+    },
+    "dates": {
+      "created": "Criado em {date}",
+      "started": "Iniciado em {date}",
+      "completed": "Concluído em {date}"
+    },
+    "history": {
+      "title": "Histórico e comentários",
+      "empty": "Nada por aqui ainda.",
+      "created": "Card criado em {column}",
+      "moved": "Moveu de {from} para {to}",
+      "assigned": "Responsável: {name}",
+      "unassigned": "Removeu o responsável ({name})",
+      "dueSet": "Prazo definido para {date}",
+      "dueCleared": "Prazo removido",
+      "edited": "Editou os dados do card",
+      "commentPlaceholder": "Escreva um comentário... (Ctrl+Enter envia)",
+      "commentingAs": "Comentando como {name}",
+      "send": "Comentar"
+    },
     "title": "Kanban · Time de Tecnologia",
     "subtitle": "Projetos aprovados entram sozinhos no Backlog",
     "loginHint": "Acesso do time de tecnologia. Digite a senha do time.",
@@ -961,6 +991,7 @@
       "CONCLUIDO": "Concluído"
     },
     "fields": {
+      "dueDate": "Prazo",
       "title": "Título",
       "column": "Coluna",
       "assignee": "Responsável",

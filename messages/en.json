@@ -929,6 +929,36 @@
     }
   },
   "techBoard": {
+    "overdueFilter": "Overdue ({count})",
+    "due": {
+      "overdue": "Overdue · {date}",
+      "today": "Due today",
+      "dueOn": "Due {date}",
+      "doneOn": "Done on {date}"
+    },
+    "actions": {
+      "start": "Start (In progress)",
+      "complete": "Mark as done"
+    },
+    "dates": {
+      "created": "Created {date}",
+      "started": "Started {date}",
+      "completed": "Completed {date}"
+    },
+    "history": {
+      "title": "History and comments",
+      "empty": "Nothing here yet.",
+      "created": "Card created in {column}",
+      "moved": "Moved from {from} to {to}",
+      "assigned": "Assignee: {name}",
+      "unassigned": "Removed assignee ({name})",
+      "dueSet": "Due date set to {date}",
+      "dueCleared": "Due date removed",
+      "edited": "Edited the card",
+      "commentPlaceholder": "Write a comment... (Ctrl+Enter sends)",
+      "commentingAs": "Commenting as {name}",
+      "send": "Comment"
+    },
     "title": "Kanban · Tech Team",
     "subtitle": "Approved projects land in the Backlog automatically",
     "loginHint": "Tech team access. Enter the team password.",
@@ -961,6 +991,7 @@
       "CONCLUIDO": "Done"
     },
     "fields": {
+      "dueDate": "Due date",
       "title": "Title",
       "column": "Column",
       "assignee": "Assignee",

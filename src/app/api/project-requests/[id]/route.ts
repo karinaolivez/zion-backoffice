@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { PermissionAction } from '@/types/permissions';
 import { ProjectRequestStatus } from '@/types/project-requests';
-import { requireProjectRequestPermission } from '@/lib/project-requests/server';
+import { logTechBoardEvents, requireProjectRequestPermission } from '@/lib/project-requests/server';
 
 const DETAIL_FIELDS =
   'id, area_id, requester_external_id, requester_name, requester_email, requester_whatsapp, title, description, status, viewed_at, viewed_by_name, moderator_notes, decided_at, decided_by_name, created_at, updated_at, area:church_areas(id, name, slug)';
@@ -105,25 +105,45 @@ export async function PATCH(request: NextRequest, { params }: { params: Promise<
 
   if (status === ProjectRequestStatus.APROVADA) {
     const area = Array.isArray(updated.area) ? updated.area[0] : updated.area;
-    const { error: cardError } = await auth.supabase.from('tech_board_cards').upsert(
-      {
-        request_id: updated.id,
-        title: updated.title,
-        description: updated.description,
-        area_name: area?.name || null,
-        requester_name: updated.requester_name,
-        requester_whatsapp: updated.requester_whatsapp,
-        column_key: 'BACKLOG',
-        position: Date.now(),
-      },
-      { onConflict: 'request_id', ignoreDuplicates: true }
-    );
-    if (cardError) {
-      console.error('Erro ao criar card no Kanban:', cardError);
-      return NextResponse.json(
-        { success: true, data: updated, warning: 'Solicitação aprovada, mas o card do Kanban não foi criado' },
-        { status: 200 }
-      );
+    const { data: existingCard } = await auth.supabase
+      .from('tech_board_cards')
+      .select('id')
+      .eq('request_id', updated.id)
+      .maybeSingle();
+
+    if (!existingCard) {
+      const { data: card, error: cardError } = await auth.supabase
+        .from('tech_board_cards')
+        .insert({
+          request_id: updated.id,
+          title: updated.title,
+          description: updated.description,
+          area_name: area?.name || null,
+          requester_name: updated.requester_name,
+          requester_whatsapp: updated.requester_whatsapp,
+          column_key: 'BACKLOG',
+          position: Date.now(),
+        })
+        .select('id')
+        .single();
+
+      if (cardError || !card) {
+        console.error('Erro ao criar card no Kanban:', cardError);
+        return NextResponse.json(
+          { success: true, data: updated, warning: 'Solicitação aprovada, mas o card do Kanban não foi criado' },
+          { status: 200 }
+        );
+      }
+
+      await logTechBoardEvents(auth.supabase, [
+        {
+          card_id: card.id,
+          event_type: 'CREATED',
+          author_name: auth.user.fullName,
+          to_value: 'BACKLOG',
+          body: 'Aprovado na moderação de projetos',
+        },
+      ]);
     }
   }
 

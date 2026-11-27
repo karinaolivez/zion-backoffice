@@ -929,6 +929,36 @@
     }
   },
   "techBoard": {
+    "overdueFilter": "Atrasadas ({count})",
+    "due": {
+      "overdue": "Atrasada · {date}",
+      "today": "Vence hoy",
+      "dueOn": "Plazo {date}",
+      "doneOn": "Terminada el {date}"
+    },
+    "actions": {
+      "start": "Iniciar (En progreso)",
+      "complete": "Marcar como terminada"
+    },
+    "dates": {
+      "created": "Creada el {date}",
+      "started": "Iniciada el {date}",
+      "completed": "Terminada el {date}"
+    },
+    "history": {
+      "title": "Historial y comentarios",
+      "empty": "Nada por aquí todavía.",
+      "created": "Tarjeta creada en {column}",
+      "moved": "Movió de {from} a {to}",
+      "assigned": "Responsable: {name}",
+      "unassigned": "Quitó el responsable ({name})",
+      "dueSet": "Plazo definido para {date}",
+      "dueCleared": "Plazo eliminado",
+      "edited": "Editó la tarjeta",
+      "commentPlaceholder": "Escribe un comentario... (Ctrl+Enter envía)",
+      "commentingAs": "Comentando como {name}",
+      "send": "Comentar"
+    },
     "title": "Kanban · Equipo de Tecnología",
     "subtitle": "Los proyectos aprobados entran solos al Backlog",
     "loginHint": "Acceso del equipo de tecnología. Ingresa la contraseña del equipo.",
@@ -961,6 +991,7 @@
       "CONCLUIDO": "Terminado"
     },
     "fields": {
+      "dueDate": "Plazo",
       "title": "Título",
       "column": "Columna",
       "assignee": "Responsable",

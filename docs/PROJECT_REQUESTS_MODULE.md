@@ -29,19 +29,23 @@ Líder (formulário)  ──►  Moderação (líder de tecnologia + head)  ─�
 - Colunas: Backlog, A fazer, Em andamento, Em revisão, Concluído. Arrastar e soltar, ou trocar a coluna dentro do card.
 - Responsável é texto livre. "Pegar pra mim" usa o nome salvo no navegador.
 - O time também pode criar cards manuais.
+- **Prazo** por card. O selo fica vermelho "Em atraso" quando o prazo passou e o card não está em Concluído (amarelo para "Vence hoje" e prazos próximos). Botão "Em atraso (N)" no topo filtra só os atrasados.
+- Botões rápidos no card: **Iniciar (Em andamento)** e **Marcar como concluído**. As datas de início e conclusão ficam gravadas.
+- **Histórico e comentários**: toda mudança de coluna, responsável e prazo fica registrada com data/hora e quem fez; o time comenta no próprio card.
 - Mesmo banco do backoffice, então o que é aprovado na moderação aparece direto no Backlog. Se quiserem um endereço próprio (ex.: `kanban.zion...`), basta apontar o subdomínio para `/pt/tech-board`.
 
 ## Banco de dados
 
-Migration: `supabase/migrations/20261127000001_create_project_requests_module.sql`
+Migrations: `supabase/migrations/20261127000001_create_project_requests_module.sql` e `20261127000002_tech_board_history_and_due_dates.sql`
 
 | Tabela | Para quê |
 | --- | --- |
 | `church_areas` | Áreas/ministérios da igreja (lista inicial no seed; edite inserindo ou desativando linhas) |
 | `project_requests` | Solicitações, status (`NOVA`, `EM_ANALISE`, `APROVADA`, `RECUSADA`), quem viu e quem decidiu |
-| `tech_board_cards` | Cards do Kanban, com vínculo opcional à solicitação |
+| `tech_board_cards` | Cards do Kanban, com vínculo opcional à solicitação, prazo (`due_date`), `started_at` e `completed_at` |
+| `tech_board_card_events` | Histórico (criação, movimentações, responsável, prazo, edição) e comentários de cada card |
 
-As três tabelas têm RLS sem políticas para `anon`/`authenticated`: só as API Routes (service role) leem e escrevem.
+As tabelas têm RLS sem políticas para `anon`/`authenticated`: só as API Routes (service role) leem e escrevem.
 
 ## Permissões
 
@@ -74,5 +78,6 @@ SUPABASE_SERVICE_ROLE_KEY=
 | `PATCH /api/project-requests/:id` | `EDITAR` |
 | `GET/POST/DELETE /api/tech-board/session` | senha do time |
 | `GET/POST /api/tech-board/cards`, `PATCH/DELETE /api/tech-board/cards/:id` | cookie do Kanban |
+| `GET/POST /api/tech-board/cards/:id/events` (histórico / comentar) | cookie do Kanban |
 
 As rotas do módulo validam o token da sessão Supabase (`Authorization: Bearer`) e a permissão no servidor.

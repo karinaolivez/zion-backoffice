@@ -77,8 +77,42 @@ export interface TechBoardCard {
   assignee?: string | null;
   column_key: TechBoardColumn;
   position: number;
+  /** Prazo (YYYY-MM-DD) */
+  due_date?: string | null;
+  started_at?: string | null;
+  completed_at?: string | null;
+  /** Quantidade de comentários (calculada na listagem) */
+  comment_count?: number;
   created_at: string;
   updated_at: string;
+}
+
+export type TechBoardEventType = 'CREATED' | 'MOVED' | 'ASSIGNED' | 'DUE_DATE' | 'EDITED' | 'COMMENT';
+
+export interface TechBoardCardEvent {
+  id: string;
+  card_id: string;
+  event_type: TechBoardEventType;
+  author_name?: string | null;
+  from_value?: string | null;
+  to_value?: string | null;
+  body?: string | null;
+  created_at: string;
+}
+
+/** Situação do prazo do card */
+export type DueState = 'none' | 'ok' | 'soon' | 'today' | 'overdue' | 'done';
+
+/** Calcula a situação do prazo comparando datas locais (YYYY-MM-DD) */
+export function getDueState(card: Pick<TechBoardCard, 'due_date' | 'column_key'>, today = new Date()): DueState {
+  if (card.column_key === 'CONCLUIDO') return 'done';
+  if (!card.due_date) return 'none';
+  const pad = (n: number) => String(n).padStart(2, '0');
+  const todayKey = `${today.getFullYear()}-${pad(today.getMonth() + 1)}-${pad(today.getDate())}`;
+  if (card.due_date < todayKey) return 'overdue';
+  if (card.due_date === todayKey) return 'today';
+  const diffDays = (new Date(`${card.due_date}T00:00:00`).getTime() - new Date(`${todayKey}T00:00:00`).getTime()) / 86400000;
+  return diffDays <= 2 ? 'soon' : 'ok';
 }
 
 export interface CreateTechBoardCardData {
@@ -87,11 +121,17 @@ export interface CreateTechBoardCardData {
   area_name?: string;
   assignee?: string;
   column_key?: TechBoardColumn;
+  due_date?: string | null;
+  /** Quem está criando (para o histórico) */
+  actor?: string;
 }
 
 export type UpdateTechBoardCardData = Partial<
-  Pick<TechBoardCard, 'title' | 'description' | 'area_name' | 'assignee' | 'column_key' | 'position'>
->;
+  Pick<TechBoardCard, 'title' | 'description' | 'area_name' | 'assignee' | 'column_key' | 'position' | 'due_date'>
+> & {
+  /** Quem está fazendo a alteração (para o histórico) */
+  actor?: string;
+};
 
 // Regras de validação compartilhadas entre front e API
 export const PROJECT_REQUEST_LIMITS = {

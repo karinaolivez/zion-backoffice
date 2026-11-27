@@ -8,6 +8,7 @@ import {
   ProjectRequest,
   ProjectRequestSummary,
   TechBoardCard,
+  TechBoardCardEvent,
   UpdateTechBoardCardData,
 } from '@/types/project-requests';
 
@@ -134,6 +135,14 @@ export const techBoardService = {
     boardFetch<TechBoardCard>(`/cards/${id}`, { method: 'PATCH', body: JSON.stringify(data) }),
 
   deleteCard: (id: string) => boardFetch<void>(`/cards/${id}`, { method: 'DELETE' }),
+
+  getEvents: (id: string) => boardFetch<TechBoardCardEvent[]>(`/cards/${id}/events`),
+
+  addComment: (id: string, author: string, body: string) =>
+    boardFetch<TechBoardCardEvent>(`/cards/${id}/events`, {
+      method: 'POST',
+      body: JSON.stringify({ author, body }),
+    }),
 };
 
 export default projectRequestsService;

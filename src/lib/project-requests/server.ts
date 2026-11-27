@@ -185,3 +185,34 @@ export function requireTechBoardSession(request: NextRequest): BoardAuthResult {
 }
 
 export const onlyDigits = (value: string) => (value || '').replace(/\D/g, '');
+
+const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
+
+/** Valida prazo vindo do cliente: 'YYYY-MM-DD', '' ou null (limpa). undefined = não mexe. */
+export function parseDueDate(value: unknown): { ok: true; value: string | null | undefined } | { ok: false } {
+  if (value === undefined) return { ok: true, value: undefined };
+  if (value === null || value === '') return { ok: true, value: null };
+  if (typeof value === 'string' && DATE_RE.test(value) && !Number.isNaN(Date.parse(value))) {
+    return { ok: true, value };
+  }
+  return { ok: false };
+}
+
+export const actorName = (value: unknown) =>
+  typeof value === 'string' && value.trim() ? value.trim().slice(0, 255) : null;
+
+export interface TechBoardEventInput {
+  card_id: string;
+  event_type: 'CREATED' | 'MOVED' | 'ASSIGNED' | 'DUE_DATE' | 'EDITED' | 'COMMENT';
+  author_name?: string | null;
+  from_value?: string | null;
+  to_value?: string | null;
+  body?: string | null;
+}
+
+/** Grava eventos no histórico do card. Falha no histórico não derruba a operação principal. */
+export async function logTechBoardEvents(supabase: SupabaseClient, events: TechBoardEventInput[]) {
+  if (events.length === 0) return;
+  const { error } = await supabase.from('tech_board_card_events').insert(events);
+  if (error) console.error('Tech board: erro ao gravar histórico', error);
+}
